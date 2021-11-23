@@ -14,7 +14,6 @@ export default class RoverData extends React.Component {
     componentDidMount () {
         const BASE_URL = 'https://api.nasa.gov/mars-photos/api/v1/manifests/'
         const API_KEY = 'XAWxBohE3aseeg93CbssMc8e7ckcLD7VvxOKgUBY'
-        console.log("RoverData: " + this.props.selectRover)
         const url = BASE_URL + this.props.selectRover + '?api_key=' + API_KEY
         fetch(url)
             .then(res => res.json())
@@ -24,7 +23,7 @@ export default class RoverData extends React.Component {
                         isLoaded: true,
                         items: result.photo_manifest
                     })
-                    console.log(result.photo_manifest)
+                    console.log("Results" + result.photo_manifest)
                 },
                 (error) => {
                     this.setState({
@@ -45,7 +44,7 @@ export default class RoverData extends React.Component {
                    </div>
         } else {
             return (
-                <div>  
+                <div className="w3-container w3-mobile w3-animate-opacity">  
                     <h2>{items.name}</h2>
                     <p><strong>Landing Date: </strong>{items.landing_date}</p>
                     <p><strong>Launch Date: </strong>{items.launch_date}</p>
