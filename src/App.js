@@ -2,7 +2,7 @@ import React from 'react'
 import './css/App.css'
 import Title from './components/Title'
 
-function App () {
+export default function App () {
   const name = {
     title: 'Mars Rover',
     subtitle: 'Explore the surface of Mars'
@@ -15,5 +15,3 @@ function App () {
     </div>
   )
 }
-
-export default App
