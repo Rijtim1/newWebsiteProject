@@ -17,7 +17,7 @@ export default class Rover extends React.Component {
     this.setState({
       selectRover: roverName.toLowerCase()
     })
-    console.log(this.state.selectRover)
+    console.log("On Click " + roverName)
   }
 
   render () {

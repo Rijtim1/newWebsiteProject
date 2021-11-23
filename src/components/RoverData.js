@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FadingBalls } from 'react-cssfx-loading/lib/FadingBalls'
 
 export default class RoverData extends React.Component {
   constructor (props) {
@@ -14,7 +15,8 @@ export default class RoverData extends React.Component {
     componentDidMount () {
         const BASE_URL = 'https://api.nasa.gov/mars-photos/api/v1/manifests/'
         const API_KEY = 'XAWxBohE3aseeg93CbssMc8e7ckcLD7VvxOKgUBY'
-        const url = BASE_URL + this.props.rover + '?api_key=' + API_KEY
+        console.log("RoverData: " + this.props.selectRover)
+        const url = BASE_URL + this.props.selectRover + '?api_key=' + API_KEY
         fetch(url)
             .then(res => res.json())
             .then(
@@ -39,32 +41,24 @@ export default class RoverData extends React.Component {
         if (error) {
             return <div>Error: {error.message}</div>
         } else if (!isLoaded) {
-            return <div>Loading...</div>
+            return <div>
+                Loading...
+                   </div>
         } else {
             return (
-                <div>
-                    {console.log(items)}
-                    {this.props.selectRover}
+                <div>  
+                    <h2>{items.name}</h2>
+                    <p><strong>Landing Date: </strong>{items.landing_date}</p>
+                    <p><strong>Launch Date: </strong>{items.launch_date}</p>
+                    <p><strong>Status: </strong>{items.status}</p>
+                    <p><strong>Total Photos: </strong>{items.total_photos}</p>
+                    <p><strong>Max Date: </strong>{items.max_date}</p>
                 </div>
             )
         }
     }
 
 }
-
-
-
-
-
-//   render () {
-//     return (
-//             <div>
-//                 <h3>Rover Data</h3>
-//                 <p>Recieved this from Rover: {this.props.selectRover}</p>
-//             </div>
-//     )
-//   }
-// }
 
 RoverData.propTypes = {
   roverName: PropTypes.string
