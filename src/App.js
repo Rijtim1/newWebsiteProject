@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container'
 export default function App () {
   const name = {
     title: 'Mars Rover Photos',
-    subtitle: 'Explore the surface of Mars'
+    subtitle: 'Explore the surface of Mars through the eyes of a Rover'
   }
   // const rovers = ['Curiosity', 'Opportunity', 'Spirit']
   return (

@@ -8,7 +8,7 @@ export default class Title extends React.Component {
     return (
       <Container fluid className="w3-mobile">
         <div className='w3-teal w3-center w3-animate-top w3-padding-32'>
-          <h1 className={'w3-center'}>{this.props.title}</h1>
+          <h1 className={'w3-center w3-jumbo'}>{this.props.title}</h1>
           <h2 className={'w3-center'}>{this.props.subtitle}</h2>
         </div>
       </Container>

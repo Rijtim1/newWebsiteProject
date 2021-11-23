@@ -1,15 +1,14 @@
-/* eslint-disable react/prop-types */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Container from 'react-bootstrap/Container'
-// import RoverData from './RoverData'
+import RoverData from './RoverData'
+import Button from 'react-bootstrap/Button'
+
 export default class Rover extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       selectRover: '',
-      error: null,
-      isLoaded: false,
       data: []
     }
   }
@@ -18,18 +17,30 @@ export default class Rover extends React.Component {
     this.setState({
       selectRover: roverName
     })
-    // <RoverData roverName={roverName} />
   }
 
   render () {
     return (
             <Container>
-                <div className="w3-center w3-animate-bottom w3-mobile w3-yellow">
-                    {this.props.rovers.map((rover, index) => {
-                      return (
-                            <button key={index} className="w3-margin">{rover}</button>
-                      )
-                    })}
+                <div className="w3-center w3-animate-bottom w3-mobile">
+                    {this.state.selectRover === '' ? 
+                    <div>
+                        <h3>Select a Rover </h3>
+                        {
+                                this.props.rovers.map((rover, index) => 
+                                {
+                                    return (
+                                            <Button variant="primary" className="w3-margin" onClick={() => this.onClick(rover)}>{rover}</Button>
+                                    )
+                                }
+                            )
+                        }
+                    </div>
+                    : 
+                    <div>
+                        <RoverData selectRover={this.state.selectRover}/>
+                    </div>
+                    }
                 </div>
             </Container>
     )
