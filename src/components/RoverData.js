@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FadingBalls } from 'react-cssfx-loading/lib/FadingBalls'
 
 export default class RoverData extends React.Component {
   constructor (props) {
@@ -53,6 +52,7 @@ export default class RoverData extends React.Component {
                     <p><strong>Status: </strong>{items.status}</p>
                     <p><strong>Total Photos: </strong>{items.total_photos}</p>
                     <p><strong>Max Date: </strong>{items.max_date}</p>
+                    <p><strong>Max Sol: </strong>{items.max_sol}</p>
                 </div>
             )
         }
