@@ -15,8 +15,9 @@ export default class Rover extends React.Component {
 
   onClick (roverName) {
     this.setState({
-      selectRover: roverName
+      selectRover: roverName.toLowerCase()
     })
+    console.log(this.state.selectRover)
   }
 
   render () {
@@ -30,7 +31,7 @@ export default class Rover extends React.Component {
                                 this.props.rovers.map((rover, index) => 
                                 {
                                     return (
-                                            <Button variant="primary" className="w3-margin" onClick={() => this.onClick(rover)}>{rover}</Button>
+                                        <Button variant="primary" className="w3-margin"onClick={() => this.onClick(rover)}>{rover}</Button>
                                     )
                                 }
                             )
