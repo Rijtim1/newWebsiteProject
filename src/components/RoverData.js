@@ -40,7 +40,6 @@ export default class RoverData extends React.Component {
                         isLoaded: true,
                         items: result.photo_manifest
                     })
-                    console.log("Results" + result.photo_manifest)
                 },
                 (error) => {
                     this.setState({

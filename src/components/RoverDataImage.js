@@ -38,8 +38,7 @@ export default class RoverDataImage extends React.Component {
     }
 
     render () {
-        // const { error, isLoaded, photos } = this.state
-        const { error, isLoaded } = this.state
+        const { error, isLoaded, photos } = this.state
         if (error) {
             return <div>Error: {error.message}</div>
         } else if (!isLoaded) {
@@ -48,14 +47,7 @@ export default class RoverDataImage extends React.Component {
             return (
                 <div className="w3-mobile">
                     <p>The FUCKING IMAGE WONT LOAD AND I DONT UNDERSTAND WHY HELP!!!!!! IM LOSING BRAIN CELLS</p>
-                    {/* {
-                        photos.map(photo => (
-                            <div className="w3-container w3-mobile w3-animate-opacity">
-                                <img src={photo.img_src} alt={photo.earth_date} />
-                                
-                            </div>
-                        ))
-                    } */}
+                    <p>There should be images below this if my logic is right, but idk im pretty fucking stupid</p>
                 </div>
                 
             )
