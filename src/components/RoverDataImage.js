@@ -6,6 +6,7 @@ import '../css/w3.css'
 import Image from 'react-bootstrap/Image'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/RoverDataImage.css'
+import Alert from 'react-bootstrap/Alert'
 
 export default class RoverDataImage extends React.Component {
     constructor (props) {
@@ -15,18 +16,14 @@ export default class RoverDataImage extends React.Component {
             isLoaded: false,
             photos: []
         }
-        this.handleClick = this.handleClick.bind(this)
-    }
-
-    handleClick () {
-        // this.props.selectRover(this.props.rover)
-
+        // this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount () {
         const BASE_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/'
         const API_KEY = 'XAWxBohE3aseeg93CbssMc8e7ckcLD7VvxOKgUBY'
         const url = BASE_URL + this.props.roverName + '/photos?api_key=' + API_KEY + '&sol=' + this.props.solValue
+        console.log(url)
         fetch(url)
             .then(res => res.json())
             .then(
@@ -46,14 +43,16 @@ export default class RoverDataImage extends React.Component {
     }
 
     render () {
-        const { error, isLoaded, photos } = this.state
+        const { error, isLoaded, photos } = this.state        
         if (error) {
             return <div>Error: {error.message}</div>
         } else if (!isLoaded) {
             return <div>Loading...</div>
         } else {
             return (
-                <div className="w3-mobile w3-grey">
+                <div>
+                    {photos.length > 0 ? 
+                    <div className="w3-mobile w3-grey">
                     <Carousel>
                         {photos.map(photo => (
                             <CarouselItem>
@@ -68,9 +67,9 @@ export default class RoverDataImage extends React.Component {
                         ))}
                     </Carousel>
                 </div>
-                
-            )
-                        
+                : <div> <Alert key={this.props.solValue} variant="info">No photos available for sol {this.props.solValue} </Alert></div>}
+                </div>                
+            )                        
         }
     }
 }
