@@ -26,12 +26,12 @@ export default class Rover extends React.Component {
                 <div className="w3-center w3-animate-bottom w3-mobile">
                     {this.state.selectRover === '' ? 
                     <div>
-                        <h3>Select a Rover </h3>
+                        <h3 className="w3-margin">Select a Rover </h3>
                         {
                                 this.props.rovers.map((rover, index) => 
                                 {
                                     return (
-                                        <Button variant="primary" className="w3-margin" onClick={() => this.onClick(rover)}>{rover}</Button>
+                                        <Button key={index} variant="primary" className="w3-margin" onClick={() => this.onClick(rover)}>{rover}</Button>
                                     )
                                 }
                             )

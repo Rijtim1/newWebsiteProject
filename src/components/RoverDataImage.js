@@ -1,8 +1,10 @@
 import React from 'react'
-// import Carousel from 'react-bootstrap/Carousel'
-// import CarouselItem from 'react-bootstrap/esm/CarouselItem'
-// import CarouselCaption from 'react-bootstrap/esm/CarouselCaption'
+import Carousel from 'react-bootstrap/Carousel'
+import CarouselItem from 'react-bootstrap/esm/CarouselItem'
+import CarouselCaption from 'react-bootstrap/esm/CarouselCaption'
 import '../css/w3.css'
+import Image from 'react-bootstrap/Image'
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default class RoverDataImage extends React.Component {
     constructor (props) {
@@ -23,9 +25,10 @@ export default class RoverDataImage extends React.Component {
             .then(res => res.json())
             .then(
                 (result) => {
+                    console.log(result)
                     this.setState({
                         isLoaded: true,
-                        items: result.photos
+                        photos: result.photos
                     })
                 },
                 (error) => {
@@ -45,10 +48,18 @@ export default class RoverDataImage extends React.Component {
             return <div>Loading...</div>
         } else {
             return (
-                <div className="w3-mobile">
-                    {photos}
-                    <p>The FUCKING IMAGE WONT LOAD AND I DONT UNDERSTAND WHY HELP!!!!!! IM LOSING BRAIN CELLS</p>
-                    <p>There should be images below this if my logic is right, but idk im pretty fucking stupid</p>
+                <div className="w3-mobile w3-grey">
+                    <Carousel>
+                        {photos.map(photo => (
+                            <CarouselItem>
+                                <Image className={"w3-image"} src={photo.img_src} fluid />
+                                <CarouselCaption>
+                                    <h3>{photo.earth_date}</h3>
+                                    <h4>{photo.camera.name + " (" + photo.camera.full_name + ")"} </h4>
+                                </CarouselCaption>
+                            </CarouselItem>
+                        ))}
+                    </Carousel>
                 </div>
                 
             )
