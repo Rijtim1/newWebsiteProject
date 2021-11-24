@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import RoverDataImage from './RoverDataImage'
 import 'bootstrap/dist/css/bootstrap.css';
 import Spinner from 'react-bootstrap/Spinner'
+// import Button from 'react-bootstrap/Button'
 
 export default class RoverData extends React.Component {
   constructor (props) {
@@ -26,6 +27,10 @@ export default class RoverData extends React.Component {
     handleSubmit (event) {
         event.preventDefault()
         this.setState({submitted: true})
+    }
+
+    onClick = () => {
+        window.location.reload()
     }
 
     componentDidMount () {
@@ -86,7 +91,7 @@ export default class RoverData extends React.Component {
                         </form>
                         }
                     </div>
-                
+                    {/* <Button variant="secondary" className="w3-margin" onClick={this.onClick}>Reset</Button> */}
                 </div>
             )
         }

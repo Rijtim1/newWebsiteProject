@@ -60,7 +60,7 @@ export default class RoverDataImage extends React.Component {
                 <div>
                     {/* <p>Images loaded: {photos.length}</p> */}
                     {photos.length > 0 ? 
-                    <div className="w3-mobile w3-grey">
+                    <div className="w3-grey">
                     <Carousel>
                         {photos.map(photo => (
                             <CarouselItem>
