@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import RoverDataImage from './RoverDataImage'
 import 'bootstrap/dist/css/bootstrap.css';
+import Spinner from 'react-bootstrap/Spinner'
 
 export default class RoverData extends React.Component {
   constructor (props) {
@@ -56,7 +57,9 @@ export default class RoverData extends React.Component {
             return <div>Error: {error.message}</div>
         } else if (!isLoaded) {
             return <div>
-                Loading...
+                {/* Loading... */}
+                <Spinner animation="border" role="status">
+                </Spinner>
                    </div>
         } else {
             return (

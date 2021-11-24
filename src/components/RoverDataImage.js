@@ -7,6 +7,7 @@ import Image from 'react-bootstrap/Image'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/RoverDataImage.css'
 import Alert from 'react-bootstrap/Alert'
+import Spinner from 'react-bootstrap/Spinner'
 
 export default class RoverDataImage extends React.Component {
     constructor (props) {
@@ -47,7 +48,8 @@ export default class RoverDataImage extends React.Component {
         if (error) {
             return <div>Error: {error.message}</div>
         } else if (!isLoaded) {
-            return <div>Loading...</div>
+            return <div><Spinner animation="border" role="status">
+            </Spinner></div>
         } else {
             return (
                 <div>
@@ -60,8 +62,10 @@ export default class RoverDataImage extends React.Component {
                                     <Image className={"w3-image image-css"} src={photo.img_src} fluid />
                                 </a>
                                 <CarouselCaption>
-                                    <h3>{photo.earth_date}</h3>
-                                    <h4>{photo.camera.name + " (" + photo.camera.full_name + ")"} </h4>
+                                    <div className="w3-black">
+                                        <h3>{photo.earth_date}</h3>
+                                        <h4>{photo.camera.name + " (" + photo.camera.full_name + ")"} </h4>
+                                    </div>
                                 </CarouselCaption>
                             </CarouselItem>
                         ))}
@@ -73,3 +77,6 @@ export default class RoverDataImage extends React.Component {
         }
     }
 }
+
+
+// make the text more visible
