@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../css/RoverDataImage.css'
 import Alert from 'react-bootstrap/Alert'
 import Spinner from 'react-bootstrap/Spinner'
+import Button from 'react-bootstrap/Button'
 
 export default class RoverDataImage extends React.Component {
     constructor (props) {
@@ -18,6 +19,10 @@ export default class RoverDataImage extends React.Component {
             photos: []
         }
         // this.handleClick = this.handleClick.bind(this)
+    }
+
+    onClick = () => {
+        window.location.reload()
     }
 
     componentDidMount () {
@@ -53,6 +58,7 @@ export default class RoverDataImage extends React.Component {
         } else {
             return (
                 <div>
+                    {/* <p>Images loaded: {photos.length}</p> */}
                     {photos.length > 0 ? 
                     <div className="w3-mobile w3-grey">
                     <Carousel>
@@ -72,6 +78,9 @@ export default class RoverDataImage extends React.Component {
                     </Carousel>
                 </div>
                 : <div> <Alert key={this.props.solValue} variant="info">No photos available for sol {this.props.solValue} </Alert></div>}
+
+                <Button variant="secondary" className="w3-margin" onClick={this.onClick}>Reset</Button>
+
                 </div>                
             )                        
         }
