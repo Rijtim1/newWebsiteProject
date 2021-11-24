@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Container from 'react-bootstrap/Container'
 import RoverData from './RoverData'
 import Button from 'react-bootstrap/Button'
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default class Rover extends React.Component {
   constructor (props) {
@@ -17,7 +18,6 @@ export default class Rover extends React.Component {
     this.setState({
       selectRover: roverName.toLowerCase()
     })
-    // console.log("On Click " + roverName)
   }
 
   render () {

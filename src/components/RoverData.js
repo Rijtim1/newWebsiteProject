@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import RoverDataImage from './RoverDataImage'
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default class RoverData extends React.Component {
   constructor (props) {
@@ -22,7 +23,6 @@ export default class RoverData extends React.Component {
     }
 
     handleSubmit (event) {
-        console.log('Submitted Value: ' + this.state.value)
         event.preventDefault()
         this.setState({submitted: true})
     }
