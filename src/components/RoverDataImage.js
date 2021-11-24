@@ -46,6 +46,7 @@ export default class RoverDataImage extends React.Component {
         } else {
             return (
                 <div className="w3-mobile">
+                    {photos}
                     <p>The FUCKING IMAGE WONT LOAD AND I DONT UNDERSTAND WHY HELP!!!!!! IM LOSING BRAIN CELLS</p>
                     <p>There should be images below this if my logic is right, but idk im pretty fucking stupid</p>
                 </div>
