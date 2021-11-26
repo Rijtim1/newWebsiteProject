@@ -22,7 +22,7 @@ export default class Rover extends React.Component {
 
   render () {
     return (
-            <Container>
+            <Container className="">
                 <div className="w3-center w3-animate-bottom w3-mobile">
                     {this.state.selectRover === '' ? 
                     <div>

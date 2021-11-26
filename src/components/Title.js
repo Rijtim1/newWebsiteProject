@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../css/w3.css'
 import Container from 'react-bootstrap/Container'
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default class Title extends React.Component {
   render () {
