@@ -10,6 +10,7 @@ import '../css/w3.css';
 import '../css/RoverDataImage.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
 class RoverDataImage extends Component {
   state = {
     error: null,
@@ -44,7 +45,7 @@ class RoverDataImage extends Component {
 
   render() {
     const { error, isLoaded, photos } = this.state;
-    const { roverName, solValue } = this.props;
+    const { solValue } = this.props;
 
     if (error) {
       return <div>Error: {error.message}</div>;
