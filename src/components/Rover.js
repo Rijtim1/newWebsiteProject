@@ -10,14 +10,32 @@ export default class Rover extends Component {
     super(props);
     this.state = {
       selectRover: '',
-      data: []
+      data: [],
+      loading: false, // To track loading state
     };
   }
 
-  onClick = (roverName) => {
+  onClick = async (roverName) => {
     this.setState({
-      selectRover: roverName.toLowerCase()
+      loading: true,
+      selectRover: roverName.toLowerCase(),
     });
+
+    try {
+      // Simulate fetching rover data from an API using async/await
+      const response = await fetch(`API_URL/${roverName.toLowerCase()}`);
+      const data = await response.json();
+
+      this.setState({
+        loading: false,
+        data,
+      });
+    } catch (error) {
+      console.error('Error fetching rover data:', error);
+      this.setState({
+        loading: false,
+      });
+    }
   };
 
   renderRoverButtons() {
@@ -39,11 +57,17 @@ export default class Rover extends Component {
   }
 
   render() {
-    const { selectRover } = this.state;
+    const { selectRover, loading, data } = this.state;
     return (
       <Container className="">
         <div className="w3-center w3-animate-bottom w3-mobile">
-          {selectRover === '' ? this.renderRoverButtons() : <RoverData selectRover={selectRover} />}
+          {loading ? (
+            <p>Loading...</p>
+          ) : selectRover === '' ? (
+            this.renderRoverButtons()
+          ) : (
+            <RoverData selectRover={selectRover} data={data} />
+          )}
         </div>
       </Container>
     );
@@ -51,5 +75,5 @@ export default class Rover extends Component {
 }
 
 Rover.propTypes = {
-  rovers: PropTypes.array
+  rovers: PropTypes.array,
 };
