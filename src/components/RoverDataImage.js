@@ -17,27 +17,25 @@ class RoverDataImage extends Component {
     photos: []
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const BASE_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/';
     const API_KEY = 'XAWxBohE3aseeg93CbssMc8e7ckcLD7VvxOKgUBY';
     const url = `${BASE_URL}${this.props.roverName}/photos?api_key=${API_KEY}&sol=${this.props.solValue}`;
 
-    fetch(url)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            photos: result.photos
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+
+      this.setState({
+        isLoaded: true,
+        photos: result.photos
+      });
+    } catch (error) {
+      this.setState({
+        isLoaded: true,
+        error
+      });
+    }
   }
 
   handleResetClick = () => {
