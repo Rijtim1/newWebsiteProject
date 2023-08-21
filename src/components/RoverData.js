@@ -16,26 +16,24 @@ class RoverData extends Component {
     submitted: false
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const { selectRover } = this.props;
     const url = `${BASE_URL}${selectRover}?api_key=${API_KEY}`;
 
-    fetch(url)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.photo_manifest
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+
+      this.setState({
+        isLoaded: true,
+        items: result.photo_manifest,
+      });
+    } catch (error) {
+      this.setState({
+        isLoaded: true,
+        error,
+      });
+    }
   }
 
   handleChange = (event) => {
